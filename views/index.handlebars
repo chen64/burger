@@ -9,7 +9,7 @@
                             {{this.id}}.{{this.burger_name}}
                         </div>
                         <div class="d-inline-block">
-                            <button type="submit" value="{{this.id}}" class="devourButton">Devour!</button>
+                            <button type="submit" value="1" class="devourButton">Devour!</button>
                         </div>
                     {{/unless}}
                 {{/each}}
@@ -55,14 +55,12 @@
 
     $('.devourButton').on('click', function(event){
         event.preventDefault();
-        var id = $(this).data('id')
-        var burgS = {
-            state: id
-        };
-        console.log(burgS)
-        $.ajax('/api/devour/'+id, {
+        var eat = $(this).val();
+        var value = $(this.{{this.id}})
+        console.log(eat)
+        $.ajax('/api/devour/', {
             type: 'PUT',
-            data: burgS
+            devoured: id
         }).then(function(){
             location.reload();
         });

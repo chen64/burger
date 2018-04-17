@@ -19,6 +19,7 @@ router.post("/api/burgers", function(req, res) {
 
 router.put("/api/devour", function(req, res) {
   burger.updateOne(req.body.burgerId,function(result) {
+    devoured: 1
       if (result.changedRows === 0) {
         return res.status(404).end();
       }
