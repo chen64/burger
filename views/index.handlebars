@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <h1 style='text-align: center'>Eat a burger</h1>
-        <div class="col-md-6">
+        <div class="col-lg-4">
             <div id='uneaten'>
                 {{#each burgers}}
                     {{#unless devoured}}
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-4">
             <div id="eaten">
             {{#each burgers}}
                 {{#if devoured}} 
@@ -55,14 +55,14 @@
 
     $('.devourButton').on('click', function(event){
         event.preventDefault();
-
-        var id = $(this).val();
-        var burgId = {
-            burgId: id
+        var id = $(this).data('id')
+        var burgS = {
+            state: id
         };
-        $.ajax('/api/devour/', {
+        console.log(burgS)
+        $.ajax('/api/devour/'+id, {
             type: 'PUT',
-            data: burgId
+            data: burgS
         }).then(function(){
             location.reload();
         });
