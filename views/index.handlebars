@@ -55,12 +55,14 @@
 
     $('.devourButton').on('click', function(event){
         event.preventDefault();
-        var eat = $(this).val();
-        var value = $(this.{{this.id}})
-        console.log(eat)
+        var id = $(this).val();
+        var burgerId = {
+            burgerId: id
+        }
+        console.log(id);
         $.ajax('/api/devour/', {
             type: 'PUT',
-            devoured: id
+            data: burgerId
         }).then(function(){
             location.reload();
         });
