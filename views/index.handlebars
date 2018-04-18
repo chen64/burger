@@ -45,7 +45,7 @@
         event.preventDefault();
 
         var newB = {burgerName: $('#new-burger').val().trim()};
-        $.ajax('/api/burger', {
+        $.ajax('/api/burgers', {
             type:'POST',
             data: newB
         }).then(function(){
